@@ -1,4 +1,5 @@
 RUNTIME python3
 
+RUN fun-install pip install flask
 RUN fun-install pip install requests
 RUN fun-install pip install image-quality
