@@ -2,17 +2,23 @@
 # coding=utf-8
 from flask import Flask
 from flask import request
-from flask import make_response
+from flask import make_response, jsonify, request
 from image_score import score_image
+import requests
 import oss2
 import logging
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET', 'POST'])
+logger = logging.getLogger()
+
+@app.route('/', methods=['GET'])
 def home():
-    resp = make_response('<h1>Home World<h1>', 200)
-    return resp
+    image_path = request.args.get("url")
+    assert image_path, "image_path falsy"
+    score = score_image(image_path)
+    logger.info("score", image_path, score)
+    return jsonify(score=score)
 
 
 def handler(environ, start_response):
