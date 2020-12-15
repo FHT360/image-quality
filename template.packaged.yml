@@ -11,7 +11,7 @@ Resources:
         Handler: index.handler
         Runtime: python3
         CodeUri: >-
-          oss://fun-gen-cn-hangzhou-1682716804217784/4a8f17b20c4676266d3aa421437c4c3c
+          oss://fun-gen-cn-hangzhou-1682716804217784/f0579976ce611af40378704e4784430f
       Events:
         httpTrigger:
           Type: HTTP

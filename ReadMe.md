@@ -20,6 +20,8 @@ https://github.com/ocampor/image-quality
 
 # 本地运行
 
+    pip install -U -t . pillow
+
     fun install
     fun local invoke image-quality
 
@@ -30,3 +32,7 @@ https://github.com/alibaba/funcraft/blob/master/docs/specs/2018-04-03-zh-cn.md?s
 https://developer.aliyun.com/article/699379
 
 https://github.com/alibaba/funcraft/blob/master/examples/oss-trigger/index.py
+
+# logs 
+
+https://sls.console.aliyun.com/lognext/project/fht-fc-logs/logsearch/image-quality-logs

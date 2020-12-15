@@ -1,11 +1,19 @@
-import imquality.brisque as brisque
-from PIL import Image
-import requests
-from typing import AnyStr
 import logging
+from typing import AnyStr
+import requests
+import traceback
+try:
+    from PIL import Image
+    import imquality.brisque as brisque
+except Exception as ex:
+    print("ooops:", ex)
+    traceback.print_exc()
 
+
+print("==============================")
 logger = logging.getLogger(__name__)
 logger.setLevel(level=logging.WARNING)
+
 
 def score_image(image_path: AnyStr) -> float:
     is_url = image_path.lower().startswith("http")
@@ -17,5 +25,6 @@ def score_image(image_path: AnyStr) -> float:
         r.raw.decode_content = True  # Content-Encoding
         img = Image.open(r.raw)
     else:
+        # for local path
         img = Image.open(image_path)
     return brisque.score(img)
