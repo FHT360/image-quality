@@ -10,14 +10,15 @@ import logging
 
 app = Flask(__name__)
 
-logger = logging.getLogger()
+logger = logging.getLogger(__name__)
+logger.setLevel(level=logging.WARNING)
 
 @app.route('/', methods=['GET'])
 def home():
     image_path = request.args.get("url")
     assert image_path, "image_path falsy"
     score = score_image(image_path)
-    logger.info("score", image_path, score)
+    logger.info("Score: %s, %s", image_path, score)
     return jsonify(score=score)
 
 
