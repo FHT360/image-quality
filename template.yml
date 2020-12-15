@@ -1,0 +1,39 @@
+ROSTemplateFormatVersion: '2015-09-01'
+Transform: 'Aliyun::Serverless-2018-04-03'
+Resources:
+  fht360-fc:
+    Type: 'Aliyun::Serverless::Service'
+    Properties:
+      Description: helloworld
+      NasConfig: Auto
+    image-quality-http:
+      Type: 'Aliyun::Serverless::Function'
+      Properties:
+        Handler: index.handler
+        Runtime: python3
+        CodeUri: ./
+      Events:
+        httpTrigger:
+          Type: HTTP
+          Properties:
+            AuthType: ANONYMOUS
+            Methods:
+              - POST
+              - GET
+    image-quality-event:
+      Type: 'Aliyun::Serverless::Function'
+      Properties:
+        Handler: event.handler
+        Runtime: python3
+        CodeUri: ./
+      Events:
+        imageUploaded:
+          Type: OSS
+          Properties:
+            BucketName: imgfht2
+            Events:
+              - 'oss:ObjectCreated:*'
+              - 'oss:ObjectRemoved:DeleteObject'
+            Filter:
+              Key:
+                Suffix: .png
