@@ -1,12 +1,29 @@
 #!/usr/bin/env python
 # coding=utf-8
+
+import requests
+import oss2
+import logging
+import os 
+import traceback
+
+print("==========================")
+print('requests', requests.__file__)
+for f in os.listdir(os.path.dirname( os.path.dirname(requests.__file__))):
+    print("*", f)
+
+try:
+    import flask
+except Exception as ex:
+    print("OOPS: ", ex)
+    traceback.print_exc()
+    
+print(os.listdir("."))
+
 from flask import Flask
 from flask import request
 from flask import make_response, jsonify, request
 from image_score import score_image
-import requests
-import oss2
-import logging
 
 app = Flask(__name__)
 

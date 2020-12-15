@@ -1,10 +1,11 @@
 import logging
 from typing import AnyStr
-import requests
 import traceback
+import requests
+
 try:
-    from PIL import Image
     import imquality.brisque as brisque
+    from PIL import Image
 except Exception as ex:
     print("ooops:", ex)
     traceback.print_exc()
