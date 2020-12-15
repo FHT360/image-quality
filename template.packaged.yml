@@ -1,0 +1,22 @@
+ROSTemplateFormatVersion: '2015-09-01'
+Transform: 'Aliyun::Serverless-2018-04-03'
+Resources:
+  image-quality:
+    Type: 'Aliyun::Serverless::Service'
+    Properties:
+      Description: helloworld
+    image-quality:
+      Type: 'Aliyun::Serverless::Function'
+      Properties:
+        Handler: index.handler
+        Runtime: python3
+        CodeUri: >-
+          oss://fun-gen-cn-hangzhou-1682716804217784/0a9d5b18cbbe4052500d5f1709cce754
+      Events:
+        httpTrigger:
+          Type: HTTP
+          Properties:
+            AuthType: ANONYMOUS
+            Methods:
+              - POST
+              - GET

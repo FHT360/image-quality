@@ -1,23 +1,25 @@
-# -*- coding: utf-8 -*-
-
+#!/usr/bin/env python
+# coding=utf-8
+from flask import Flask
+from flask import request
+from flask import make_response, jsonify, request
+from image_score import score_image
+import requests
+import oss2
 import logging
-HELLO_WORLD = b'Hello world!\n'
 
-# if you open the initializer feature, please implement the initializer function, as below:
-# def initializer(context):
-#    logger = logging.getLogger()  
-#    logger.info('initializing')
+app = Flask(__name__)
+
+logger = logging.getLogger()
+
+@app.route('/', methods=['GET'])
+def home():
+    image_path = request.args.get("url")
+    assert image_path, "image_path falsy"
+    score = score_image(image_path)
+    logger.info("score", image_path, score)
+    return jsonify(score=score)
 
 
 def handler(environ, start_response):
-    context = environ['fc.context']
-    request_uri = environ['fc.request_uri']
-    for k, v in environ.items():
-      if k.startswith('HTTP_'):
-        # process custom request headers
-        pass
-    # do something here
-    status = '200 OK'
-    response_headers = [('Content-type', 'text/plain')]
-    start_response(status, response_headers)
-    return [HELLO_WORLD]
+    return app(environ, start_response)
