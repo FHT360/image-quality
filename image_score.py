@@ -10,8 +10,6 @@ except Exception as ex:
     print("ooops:", ex)
     traceback.print_exc()
 
-
-print("==============================")
 logger = logging.getLogger(__name__)
 logger.setLevel(level=logging.WARNING)
 

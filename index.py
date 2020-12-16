@@ -7,11 +7,6 @@ import logging
 import os 
 import traceback
 
-print("==========================")
-print('requests', requests.__file__)
-for f in os.listdir(os.path.dirname( os.path.dirname(requests.__file__))):
-    print("*", f)
-
 try:
     import flask
 except Exception as ex:
