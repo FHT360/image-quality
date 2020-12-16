@@ -29,10 +29,14 @@ https://github.com/ocampor/image-quality
 
 https://github.com/alibaba/funcraft/blob/master/docs/specs/2018-04-03-zh-cn.md?spm=a2c6h.12873639.0.0.3c5c287ds9xUSh#OSS
 
-https://developer.aliyun.com/article/699379
+[函数计算的正确使用姿势——OSS 触发器-阿里云开发者社区](https://developer.aliyun.com/article/699379)
 
 https://github.com/alibaba/funcraft/blob/master/examples/oss-trigger/index.py
 
 # logs 
 
 https://sls.console.aliyun.com/lognext/project/fht-fc-logs/logsearch/image-quality-logs
+
+# Funfile介绍
+
+[Funfile 功能介绍-阿里云开发者社区](https://developer.aliyun.com/article/719100)
